@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIVE TEAM 2026 - Kinetic Reverse Leader</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400&display=swap');
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;height:100dvh;overflow:hidden;background:#0a0e12;}
+body{cursor:none;font-family:'DM Sans',sans-serif;color:#f0ede6;}
+
+#cur{position:fixed;inset:0;z-index:9999;pointer-events:none;mix-blend-mode:difference;}
+#cur-ring{position:absolute;left:0;top:0;width:48px;height:48px;border:1px solid #fff;border-radius:50%;transform:translate(-50%,-50%);transition:width .4s cubic-bezier(.16,1,.3,1),height .4s cubic-bezier(.16,1,.3,1);will-change:transform;}
+#cur-dot{position:absolute;left:0;top:0;width:5px;height:5px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);will-change:transform;}
+
+#photo{
+  position:fixed;inset:0;z-index:1;
+  background:url('./images/02.jpg') center/cover no-repeat;
+  filter:brightness(.55) saturate(1.1);
+  will-change:transform;
+}
+#geo{position:fixed;inset:0;z-index:2;pointer-events:none;}
+#text-layer{position:fixed;inset:0;z-index:3;pointer-events:none;will-change:transform;}
+
+.word{
+  position:absolute;
+  font-family:'Bebas Neue',sans-serif;
+  line-height:.88;
+  white-space:nowrap;
+  display:flex;
+}
+
+/* 初始佈局：左右對開 */
+.w-open  {font-size:clamp(3.5rem,9.5vw,8.5rem);top:7%;   left:0.05em; color:rgba(240,237,230,.15);}
+.w-water {font-size:clamp(3.5rem,9.5vw,8.5rem);top:7%;   right:0.05em;color:rgba(240,237,230,.15);}
+.w-dive  {font-size:clamp(7rem,min(19vw,30vh),17rem);bottom:54%;   left:-.01em; color:#f0ede6;}
+.w-2026  {font-size:clamp(7rem,min(19vw,30vh),17rem);bottom:54%;   right:-.01em;color:transparent;-webkit-text-stroke:2px rgba(240,237,230,.25);}
+.w-deeper{font-size:clamp(7rem,min(19vw,30vh),17rem);top:48%;      left:-.01em; color:#f0ede6;}
+.w-course{font-size:clamp(7rem,min(19vw,30vh),17rem);bottom:1%;    right:-.01em;color:rgba(168,230,240,.85);}
+
+.ch{display:inline-block;will-change:transform;}
+
+.micro{position:absolute;font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;opacity:0;transition:opacity .8s ease;}
+.m1{top:2%;left:50%;transform:translateX(-50%);color:rgba(168,230,240,.6);}
+.m2{top:50%;left:50%;transform:translateX(-50%) translateY(-50%);color:rgba(255,255,255,.2);font-size:.55rem;}
+.m3{bottom:2%;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.2);}
+
+.start-btn, .badges, .cta { opacity: 0; transition: opacity 0.8s ease; }
+.start-btn{position:fixed;top:1.8rem;left:1.8rem;z-index:50;display:flex;align-items:center;gap:.7rem;font-size:.62rem;letter-spacing:.18em;color:#ffffff;text-decoration:none;}
+.start-icon{width:26px;height:26px;border:1px solid rgba(255, 255, 255, 0.6);display:grid;grid-template-columns:1fr 1fr;gap:2.5px;padding:5px;}
+.start-icon span{background:#fff;color:#fff;display:block;}
+.badges{position:fixed;top:1.4rem;right:1.8rem;z-index:50;display:flex;gap:.6rem;}
+.badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;text-align:center;color:#f0ede6;border:1px solid rgba(255,255,255,.15);}
+.b1{background:#2a5c3a;} .b2{background:#1a3d6b;} .b3{background:#5c2a2a;}
+/* .cta{position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:3rem;}
+.cta-btn{border:1px solid rgba(168,230,240,.4);padding:.9rem 2rem;font-size:.65rem;color:#f0ede6;text-decoration:none;cursor:none;} */
+.cta{position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:3rem;opacity:0;transition:opacity .6s ease;}
+.cta-btn{display:inline-flex;align-items:center;gap:.7rem;border:1px solid rgba(168,230,240,.4);padding:.9rem 2rem;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:#f0ede6;text-decoration:none;cursor:none;transition:background .2s,border-color .2s,gap .2s;}
+.cta-btn:hover{background:rgba(168,230,240,.1);border-color:#a8e6f0;gap:1.1rem;}
+.cta-sep{width:1px;height:28px;background:rgba(255,255,255,.15);}
+.cta-date{font-size:.6rem;letter-spacing:.15em;opacity:.4;text-align:center;line-height:1.8;}
+
+/* ── RWD: 觸控裝置 ── */
+@media (pointer: coarse){
+  body{cursor:auto;}
+  #cur{display:none;}
+  .cta-btn,.start-btn{cursor:pointer;}
+}
+
+/* ── RWD: iPad landscape / small desktop ── */
+@media (max-width:1024px){
+  .w-dive,.w-2026,.w-deeper,.w-course{font-size:clamp(4.5rem,min(16vw,28vh),13rem);}
+  .w-open,.w-water{font-size:clamp(2.5rem,8vw,6rem);}
+  .cta{gap:2rem;}
+}
+
+/* ── RWD: iPad portrait ── */
+@media (max-width:768px){
+  .w-dive,.w-2026,.w-deeper,.w-course{font-size:clamp(3.5rem,14vw,9rem);}
+  .w-open,.w-water{font-size:clamp(2rem,7vw,4.5rem);}
+  .badges{top:1rem;right:1rem;}
+  .badge{width:38px;height:38px;font-size:9px;}
+  .start-btn{top:1.2rem;left:1.2rem;}
+  .cta{gap:1.5rem;}
+  .cta-btn{padding:.7rem 1.4rem;}
+}
+
+/* ── RWD: iPhone ── */
+@media (max-width:480px){
+  .w-dive,.w-2026,.w-deeper,.w-course{font-size:clamp(2.6rem,12.5vw,5.5rem);}
+  .w-open,.w-water{font-size:clamp(1.5rem,5.5vw,3rem);}
+  .w-course{bottom:2%;}
+  .start-btn{top:.8rem;left:.8rem;font-size:.55rem;gap:.5rem;}
+  .start-icon{width:22px;height:22px;padding:4px;}
+  .badges{top:.8rem;right:.8rem;gap:.4rem;}
+  .badge{width:32px;height:32px;font-size:8px;}
+  .cta{gap:.6rem;bottom:1.5rem;max-width:96vw;}
+  .cta-btn{padding:.6rem 1rem;font-size:.52rem;letter-spacing:.1em;}
+  .cta-sep{height:20px;}
+  .cta-date{font-size:.48rem;letter-spacing:.08em;}
+  .micro{font-size:.48rem;letter-spacing:.12em;}
+  .m2{font-size:.42rem;}
+}
+
+/* ── RWD: 橫向手機 ── */
+@media (max-height:500px) and (orientation:landscape){
+  .w-dive,.w-2026,.w-deeper,.w-course{font-size:clamp(2rem,10vh,5rem);}
+  .w-open,.w-water{font-size:clamp(1.2rem,4vh,2.5rem);}
+  .w-dive,.w-2026{bottom:56%;}
+  .w-deeper{top:40%;}
+  .badges{top:.6rem;right:.6rem;}
+  .badge{width:30px;height:30px;font-size:7px;}
+  .cta{bottom:.8rem;gap:1rem;}
+  .cta-btn{padding:.5rem 1rem;font-size:.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"><div id="cur-ring"></div><div id="cur-dot"></div></div>
+<div id="photo"></div>
+<canvas id="geo"></canvas>
+
+<div id="text-layer">
+  <div class="word w-course"  data-word="COURSE" data-side="right"></div>
+  <div class="word w-2026"    data-word="2026"   data-side="right"></div>
+  <div class="word w-water"   data-word="WATER"  data-side="right"></div>
+  
+  <div class="word w-deeper"  data-word="DEEPER" data-side="left"></div>
+  <div class="word w-dive"    data-word="DIVE"   data-side="left"></div>
+  <div class="word w-open"    data-word="OPEN"   data-side="left"></div>
+
+  <span class="micro m1">✦ Open Water · Advanced Open Water ✦</span>
+  <span class="micro m2">— Explore The Deep —</span>
+  <span class="micro m3">PADI Certified · 2026 Season</span>
+</div>
+
+<a href="#" class="start-btn" id="ui-start">
+  <div class="start-icon"><span></span><span></span><span></span><span></span></div>
+  START HERE
+</a>
+<div class="badges" id="ui-badges">
+  <a href="./itinerary.html" class="badge b1">行程</a>
+  <a href="#" class="badge b2">報名</a>
+  <a href="#" class="badge b3">關於<br>我們</a>
+</div>
+<div class="cta" id="ui-cta" style="opacity: 1;">
+  <div class="cta-date">OW · AOW<br>2026</div>
+  <div class="cta-sep"></div>
+  <a href="#" class="cta-btn">立即報名 ↗</a>
+  <div class="cta-sep"></div>
+  <div class="cta-date">名額有限<br>即刻入海</div>
+</div>
+<!-- <div class="cta" id="ui-cta">
+  <div class="cta-date">OW · AOW<br>2026</div>
+  <a href="#" class="cta-btn">立即報名 ↗</a>
+  <div class="cta-date">名額有限<br>即刻入海</div>
+</div> -->
+
+<script>
+// ── 基礎互動與視差 ──
+const isTouch=matchMedia('(pointer:coarse)').matches;
+const textLayer=document.getElementById('text-layer'),photo=document.getElementById('photo');
+let pnx=0,pny=0;
+
+if(!isTouch){
+  const ring=document.getElementById('cur-ring'),dot=document.getElementById('cur-dot');
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    pnx=mx/innerWidth-.5;pny=my/innerHeight-.5;
+  });
+  (function lag(){
+    rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(lag);
+  })();
+  (function pl(){
+    textLayer.style.transform=`translate(${pnx*-18}px,${pny*-12}px)`;
+    photo.style.transform=`translate(${pnx*12}px,${pny*8}px) scale(1.06)`;
+    requestAnimationFrame(pl);
+  })();
+}
+
+// 生成字母 Span
+document.querySelectorAll('.word[data-word]').forEach(word=>{
+  [...word.dataset.word].forEach(ch=>{
+    const s=document.createElement('span');
+    s.className='ch'; s.textContent=ch;
+    word.appendChild(s);
+  });
+});
+
+// ── 動畫核心參數 ──
+const ROW_ORDER = ['.w-course', '.w-2026', '.w-water', '.w-deeper', '.w-dive', '.w-open']; 
+
+const CHAIN_DELAY     = 70;   
+const GATHER_LEADER   = 550;  // 聚合領頭時間
+const GATHER_FOLLOWER = 800;  // 聚合跟隨時間
+const RETURN_LEADER   = 450;  // 返回領頭時間
+const RETURN_FOLLOWER = 650;  // 返回跟隨時間
+const ROW_DELAY       = 100;  
+const HOLD_MS         = 5000; 
+
+const EASE_LEADER   = 'cubic-bezier(0.5, 0, 0, 1)';   
+const EASE_FOLLOWER = 'cubic-bezier(0.4, 0, 0.2, 1)'; 
+const EASE_RETURN   = 'cubic-bezier(0.16, 1, 0.3, 1)'; 
+
+function getOffset(wordEl) {
+  const rect = wordEl.getBoundingClientRect();
+  const cls = wordEl.classList;
+  const s = Math.min(innerWidth / 1440, 1);
+  if(cls.contains('w-open'))  return (innerWidth/2) - rect.right - 45 * s;
+  if(cls.contains('w-water')) return (innerWidth/2) - rect.left - 20 * s;
+  return innerWidth/2 - (rect.left + rect.width/2);
+}
+
+/**
+ * 核心動態處理函數
+ * @param {Element} wordEl - 單字容器
+ * @param {number} startMs - 延遲啟動毫秒
+ * @param {boolean} isReturning - 是否為散開階段
+ */
+function chainLogic(wordEl, startMs, isReturning = false) {
+  const letters = Array.from(wordEl.querySelectorAll('.ch'));
+  const side = wordEl.dataset.side; // 'left' 或 'right'
+  const offset = isReturning ? 0 : getOffset(wordEl);
+  
+  let ordered;
+  
+  if (!isReturning) {
+    // 聚合階段 (Gather)
+    // 右側單字 (COURSE): 左邊字母領頭 (i=0)
+    // 左側單字 (DIVE): 右邊字母領頭 (i=length-1)
+    ordered = (side === 'right') ? letters : [...letters].reverse();
+  } else {
+    // 散開階段 (Return) - 邏輯完全顛倒
+    // 右側單字 (COURSE): 右邊字母領頭 (i=length-1)
+    // 左側單字 (DIVE): 左邊字母領頭 (i=0)
+    ordered = (side === 'right') ? [...letters].reverse() : letters;
+  }
+
+  let maxFinish = startMs;
+  ordered.forEach((ch, i) => {
+    const isLeader = (i === 0);
+    const delay = startMs + (i * CHAIN_DELAY);
+    const dur   = isReturning ? 
+                  (isLeader ? RETURN_LEADER : RETURN_FOLLOWER) : 
+                  (isLeader ? GATHER_LEADER : GATHER_FOLLOWER);
+    const ease  = isReturning ? EASE_RETURN : (isLeader ? EASE_LEADER : EASE_FOLLOWER);
+
+    if(delay + dur > maxFinish) maxFinish = delay + dur;
+
+    setTimeout(() => {
+      ch.style.transition = `transform ${dur}ms ${ease}`;
+      ch.style.transform  = `translateX(${offset}px)`;
+    }, delay);
+  });
+  return maxFinish;
+}
+
+let uiShown = false;
+function runCycle() {
+  let currentTime = 0;
+  let latestGather = 0;
+
+  // 1. 聚合啟動 (下 -> 上)
+  ROW_ORDER.forEach((selector) => {
+    const wordEl = document.querySelector(selector);
+    const finish = chainLogic(wordEl, currentTime, false);
+    if(finish > latestGather) latestGather = finish;
+    currentTime += ROW_DELAY;
+  });
+
+  if(!uiShown) {
+    setTimeout(() => {
+      document.querySelectorAll('.micro, #ui-start, #ui-badges, #ui-cta').forEach(el => el.style.opacity = '1');
+      uiShown = true;
+    }, latestGather - 500);
+  }
+
+  // 2. 停留 5 秒後啟動顛倒順序的返回
+  const returnStartTime = latestGather + HOLD_MS;
+  setTimeout(() => {
+    let returnCursor = 0;
+    let latestReturn = 0;
+    ROW_ORDER.forEach((selector) => {
+      const wordEl = document.querySelector(selector);
+      const finish = chainLogic(wordEl, returnCursor, true);
+      if(finish > latestReturn) latestReturn = finish;
+      returnCursor += ROW_DELAY;
+    });
+
+    // 3. 循環回到開始
+    setTimeout(runCycle, latestReturn + 1000);
+  }, returnStartTime);
+}
+
+document.fonts.ready.then(() => runCycle());
+
+// ── 背景裝飾 ──
+const canvas=document.getElementById('geo'),ctx=canvas.getContext('2d');
+let W,H;
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+resize();window.addEventListener('resize',resize);
+function drawGeo(){
+  ctx.clearRect(0,0,W,H);
+  requestAnimationFrame(drawGeo);
+}
+drawGeo();
+</script>
+</body>
+</html>
