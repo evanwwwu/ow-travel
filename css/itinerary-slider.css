@@ -80,7 +80,7 @@ img { display:block; max-width:100%; }
 ═══════════════════════════════════════════════ */
 .story-section {
   display:grid;
-  grid-template-columns:46% 54%;
+  grid-template-columns:34% 66%;
   align-items:start; /* CRITICAL for sticky inside grid */
 }
 
