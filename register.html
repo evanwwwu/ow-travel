@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立即報名 — DIVE TEAM 2026</title>
+<link rel="stylesheet" href="./css/cursor.css">
+<link rel="stylesheet" href="./css/register.css">
+</head>
+<body>
+
+<div id="cur"><div id="cur-ring"></div><div id="cur-dot"></div></div>
+
+<nav class="nav">
+  <a href="./index.html" class="nav-logo">DIVE TEAM</a>
+  <a href="./index.html" class="nav-back">返回首頁</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">2026 Season · PADI Certified</div>
+    <h1 class="hero-title">立即<span>報名</span></h1>
+    <p class="hero-sub">Open Water · Advanced Open Water &nbsp;／&nbsp; 名額有限，即刻入海</p>
+  </div>
+</div>
+
+<!-- ── 報名統計面板 ── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-block">
+      <div class="stat-num" id="stat-total"><span class="stat-skeleton"></span></div>
+      <div class="stat-label">總報名人數</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-block stat-block-sm">
+      <div class="stat-updated" id="stat-updated">讀取中…</div>
+      <div class="stat-label">更新時間</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- Success screen -->
+  <div class="success-screen" id="success-screen">
+    <div class="success-icon">✦</div>
+    <div class="success-title">報名成功</div>
+    <p class="success-sub">
+      感謝你的報名！<br>
+      我們將在 1–2 個工作天內以 Email 與你確認課程細節。<br>
+      有任何問題請隨時聯繫我們。
+    </p>
+    <a href="./index.html" class="success-back">← 返回首頁</a>
+  </div>
+
+  <!-- Form -->
+  <form id="reg-form" novalidate>
+    <div class="error-banner" id="error-banner">
+      請確認所有必填欄位皆已填寫完整。
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">姓名 <span class="req">*</span></label>
+        <input type="text" id="name" name="name" placeholder="王小明" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">手機號碼 <span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="09XX-XXX-XXX" autocomplete="tel" required>
+      </div>
+    </div>
+
+    <div class="form-row" style="margin-top:1.6rem">
+      <div class="form-group">
+        <label for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="count">報名人數 <span class="req">*</span></label>
+        <select id="count" name="count" required>
+          <option value="" disabled selected>請選擇</option>
+          <option value="1">1 人</option>
+          <option value="2">2 人</option>
+          <option value="3">3 人</option>
+          <option value="4">4 人</option>
+          <option value="5">5 人</option>
+          <option value="6+">6 人以上</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top:1.6rem">
+      <label for="notes">備註（選填）</label>
+      <textarea id="notes" name="notes" placeholder="如有任何特殊需求或問題，歡迎在此說明…"></textarea>
+    </div>
+
+    <div class="submit-area">
+      <button type="submit" class="submit-btn" id="submit-btn">
+        <span class="btn-label">確認送出報名</span>
+        <span class="btn-icon">↗</span>
+      </button>
+      <p class="hint" style="margin-top:1rem; text-align:center;">
+        送出後我們將以 Email 發送確認通知，請確保 Email 填寫正確。
+      </p>
+    </div>
+  </form>
+
+</div>
+
+<script src="./js/cursor.js"></script>
+<script src="./js/register.js"></script>
+</body>
+</html>
