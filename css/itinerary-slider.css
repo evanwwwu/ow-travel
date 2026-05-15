@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@100;300;400;500&display=swap');
 
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html,body {
@@ -106,7 +106,7 @@ img { display:block; max-width:100%; }
 .sl-title {
   font-family:'DM Sans';
   font-size:clamp(2.6rem,5vw,4.5rem);
-  font-weight:300;
+  font-weight:100;
   line-height:.95; letter-spacing:-.02em;
   color:#f0ede6;
 }
