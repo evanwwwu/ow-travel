@@ -53,7 +53,7 @@ img { display:block; max-width:100%; }
 }
 .hero-title { font-family:'Bebas Neue',sans-serif; line-height:.86; letter-spacing:-.005em; }
 .hero-title .row1 { font-size:clamp(2.4rem,7vw,6rem);   color:rgba(240,237,230,.2); }
-.hero-title .row2 { font-size:clamp(4.5rem,14vw,13rem); color:#f0ede6; }
+.hero-title .row2 { font-size:clamp(4.5rem,14vw,13rem); color:transparent; -webkit-text-stroke:2px rgba(240,237,230,.88); }
 .hero-title .row3 { font-size:clamp(4.5rem,14vw,13rem); color:transparent; -webkit-text-stroke:1.5px rgba(168,230,240,.5); }
 .hero-title .row4 { font-size:clamp(2rem,5.5vw,4.5rem); color:rgba(168,230,240,.85); margin-top:.1em; }
 .hero-side  { display:flex; flex-direction:column; align-items:flex-end; gap:1.4rem; padding-bottom:.6rem; }
@@ -98,7 +98,7 @@ img { display:block; max-width:100%; }
 }
 
 /* Large editorial text — top of left panel */
-.sl-text { flex:1; min-height:0; }
+.sl-text { flex:0 0 auto; }
 .sl-eyebrow {
   font-size:.56rem; letter-spacing:.32em; text-transform:uppercase;
   color:rgba(168,230,240,.58); margin-bottom:.9rem;
@@ -130,18 +130,20 @@ img { display:block; max-width:100%; }
 .sl-card {
   position:relative;
   z-index:2;
-  width:260px;
+  width:100%;
   background:rgba(13,19,24,.92);
   border:1px solid rgba(255,255,255,.1);
   backdrop-filter:blur(16px);
   overflow:hidden;
   flex-shrink:0;
+  margin-top:auto;
+  margin-bottom:auto;
   transition:border-color .3s;
 }
 .sl-card:hover { border-color:rgba(168,230,240,.35); }
 
 .sl-card-img {
-  width:100%; height:148px;
+  width:100%; height:180px;
   overflow:hidden; position:relative;
 }
 .sl-card-img img {
@@ -213,7 +215,7 @@ img { display:block; max-width:100%; }
   display:flex; align-items:center;
   border-top:1px solid rgba(255,255,255,.05);
 }
-.info-inner { padding:5rem 4rem 5rem 4.5rem; max-width:520px; }
+.info-inner { padding:5rem 5.5rem; max-width:560px; }
 .info-eyebrow {
   font-size:.54rem; letter-spacing:.3em; text-transform:uppercase;
   color:#a8e6f0; margin-bottom:1.2rem;
@@ -242,7 +244,7 @@ img { display:block; max-width:100%; }
 /* ═══════════════════════════════════════════
    ACCOMMODATION
 ═══════════════════════════════════════════ */
-section { position:relative; padding:7rem 2rem; }
+section { position:relative; padding:7rem 5rem; }
 .container { max-width:1320px; margin:0 auto; }
 .eyebrow {
   display:inline-flex; align-items:center; gap:.7rem;
@@ -287,7 +289,7 @@ section { position:relative; padding:7rem 2rem; }
 /* ═══════════════════════════════════════════
    CTA + FOOTER
 ═══════════════════════════════════════════ */
-.cta-strip { padding:5rem 2rem; background:#000; border-top:1px solid rgba(240,237,230,.08); }
+.cta-strip { padding:5rem 5rem; background:#000; border-top:1px solid rgba(240,237,230,.08); }
 .cta-strip .container { display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
 .cta-strip h2  { font-family:'Bebas Neue'; font-size:clamp(2.2rem,5vw,4rem); line-height:.95; }
 .cta-strip h2 em { font-style:normal; color:#a8e6f0; }
@@ -305,7 +307,7 @@ footer { padding:3rem 2rem 4rem; text-align:center; color:rgba(255,255,255,.35);
   .incl-grid { grid-template-columns:repeat(2,1fr); }
   .story-left { padding:5rem 2.5rem 2.5rem; }
   .sl-title { font-size:clamp(3.5rem,6vw,5.5rem); }
-  .info-inner { padding:4rem 3rem 4rem 3.5rem; }
+  .info-inner { padding:4rem 4rem; }
 }
 
 @media (max-width:860px) {
@@ -325,16 +327,16 @@ footer { padding:3rem 2rem 4rem; text-align:center; color:rgba(255,255,255,.35);
   }
   .sl-deco { font-size:clamp(44vw,50vw,240px); }
   .sl-title { font-size:clamp(3.4rem,11vw,5rem); }
-  .sl-card { width:100%; max-width:300px; }
+  .sl-card { width:100%; max-width:100%; margin-top:2rem; margin-bottom:0; }
   .story-panel { height:70vh; height:70dvh; }
-  .info-inner { padding:3.5rem 1.4rem; }
+  .info-inner { padding:3.5rem 2rem; }
   .stay-grid { grid-template-columns:1fr; }
-  section { padding:5rem 1.4rem; }
+  section { padding:5rem 2rem; }
 }
 
 @media (max-width:480px) {
   .topbar { padding:1rem 1.2rem; }
-  section { padding:4rem 1.2rem; }
+  section { padding:4rem 1.4rem; }
   .incl-grid { grid-template-columns:1fr; }
   .hero-title .row2,.hero-title .row3 { font-size:clamp(3.2rem,18vw,5rem); }
   .story-panel { height:60vh; height:60dvh; }
