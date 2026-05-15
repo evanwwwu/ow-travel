@@ -93,7 +93,7 @@ img { display:block; max-width:100%; }
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  padding:5.5rem 3rem 3rem;
+  padding:5.5rem 5rem 3rem;
   border-right:1px solid rgba(255,255,255,.05);
 }
 
@@ -220,7 +220,7 @@ img { display:block; max-width:100%; }
   display:flex; align-items:center;
   border-top:1px solid rgba(255,255,255,.05);
 }
-.info-inner { padding:5rem 5.5rem; max-width:560px; }
+.info-inner { padding:5rem 7rem; max-width:600px; }
 .info-eyebrow {
   font-size:.54rem; letter-spacing:.3em; text-transform:uppercase;
   color:#a8e6f0; margin-bottom:1.2rem;
@@ -249,7 +249,7 @@ img { display:block; max-width:100%; }
 /* ═══════════════════════════════════════════
    ACCOMMODATION
 ═══════════════════════════════════════════ */
-section { position:relative; padding:7rem 5rem; }
+section { position:relative; padding:7rem 9rem; }
 .container { max-width:1320px; margin:0 auto; }
 .eyebrow {
   display:inline-flex; align-items:center; gap:.7rem;
@@ -294,7 +294,7 @@ section { position:relative; padding:7rem 5rem; }
 /* ═══════════════════════════════════════════
    CTA + FOOTER
 ═══════════════════════════════════════════ */
-.cta-strip { padding:5rem 5rem; background:#000; border-top:1px solid rgba(240,237,230,.08); }
+.cta-strip { padding:5rem 9rem; background:#000; border-top:1px solid rgba(240,237,230,.08); }
 .cta-strip .container { display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
 .cta-strip h2  { font-family:'Bebas Neue'; font-size:clamp(2.2rem,5vw,4rem); line-height:.95; }
 .cta-strip h2 em { font-style:normal; color:#a8e6f0; }
@@ -310,9 +310,9 @@ footer { padding:3rem 2rem 4rem; text-align:center; color:rgba(255,255,255,.35);
 ═══════════════════════════════════════════ */
 @media (max-width:1024px) {
   .incl-grid { grid-template-columns:repeat(2,1fr); }
-  .story-left { padding:5rem 2.5rem 2.5rem; }
+  .story-left { padding:5rem 4rem 2.5rem; }
   .sl-title { font-size:clamp(2.2rem,4.5vw,3.8rem); }
-  .info-inner { padding:4rem 4rem; }
+  .info-inner { padding:4rem 5rem; }
 }
 
 @media (max-width:860px) {
