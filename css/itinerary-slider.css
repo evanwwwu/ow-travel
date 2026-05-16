@@ -78,6 +78,10 @@ img { display:block; max-width:100%; }
 /* ═══════════════════════════════════════════════
    STORY — Split-screen scrollytelling
 ═══════════════════════════════════════════════ */
+.story-wrap {
+  margin:0 15%;
+}
+
 .story-section {
   display:grid;
   grid-template-columns:34% 66%;
@@ -319,6 +323,7 @@ footer { padding:3rem 2rem 4rem; text-align:center; color:rgba(255,255,255,.35);
   .hero-side { flex-direction:row; align-items:center; justify-content:space-between; }
   .hero-tag  { writing-mode:horizontal-tb; transform:none; }
 
+  .story-wrap { margin:0; }
   .story-section { grid-template-columns:1fr; }
   .story-left {
     position:relative;
