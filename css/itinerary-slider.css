@@ -84,7 +84,7 @@ img { display:block; max-width:100%; }
 
 .story-section {
   display:grid;
-  grid-template-columns:34% 66%;
+  grid-template-columns:1fr 1fr;
   align-items:start; /* CRITICAL for sticky inside grid */
 }
 
