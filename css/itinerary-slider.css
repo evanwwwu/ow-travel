@@ -79,12 +79,13 @@ img { display:block; max-width:100%; }
    STORY — Split-screen scrollytelling
 ═══════════════════════════════════════════════ */
 .story-wrap {
-  margin:0 15%;
+  margin:0 10%;
 }
 
 .story-section {
   display:grid;
   grid-template-columns:36% 64%;
+  gap:2.5rem;
   align-items:start; /* CRITICAL for sticky inside grid */
 }
 
