@@ -93,7 +93,7 @@ img { display:block; max-width:100%; }
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  padding:5.5rem 5rem 3rem;
+  padding:5.5rem 7rem 3rem;
   border-right:1px solid rgba(255,255,255,.05);
 }
 
@@ -132,38 +132,35 @@ img { display:block; max-width:100%; }
   position:relative;
   z-index:2;
   width:100%;
-  background:rgba(13,19,24,.92);
-  border:1px solid rgba(255,255,255,.1);
-  backdrop-filter:blur(16px);
+  background:#ffffff;
+  border:none;
   overflow:hidden;
-  flex:1 1 0;
-  min-height:0;
-  margin-top:1.5rem;
+  flex-shrink:0;
+  margin-top:auto;
+  margin-bottom:auto;
   display:flex;
   flex-direction:column;
-  transition:border-color .3s;
+  transition:box-shadow .3s;
 }
-.sl-card:hover { border-color:rgba(168,230,240,.35); }
+.sl-card:hover { box-shadow:0 8px 32px rgba(0,0,0,.18); }
 
 .sl-card-img {
-  width:100%;
-  flex:1 1 0;
-  min-height:120px;
+  width:100%; height:200px;
   overflow:hidden; position:relative;
 }
 .sl-card-img img {
   width:100%; height:100%;
   object-fit:cover;
-  filter:brightness(.86) saturate(1.05);
+  filter:brightness(.92) saturate(1.05);
   transition:transform .8s cubic-bezier(.16,1,.3,1);
 }
 .sl-card:hover .sl-card-img img { transform:scale(1.05); }
 
-.sl-card-body { padding:1rem 1.15rem 1.2rem; }
+.sl-card-body { padding:1.1rem 1.3rem 1.3rem; background:#fff; }
 
 .sl-card-name {
   font-size:.54rem; letter-spacing:.22em; text-transform:uppercase;
-  color:rgba(255,255,255,.48); margin-bottom:.55rem;
+  color:rgba(10,14,18,.4); margin-bottom:.55rem;
 }
 
 .sl-card-dots {
@@ -171,19 +168,19 @@ img { display:block; max-width:100%; }
 }
 .sl-card-dots .dot {
   width:6px; height:6px; border-radius:50%;
-  background:rgba(168,230,240,.16);
+  background:rgba(10,14,18,.12);
 }
-.sl-card-dots .dot.active { background:#a8e6f0; }
+.sl-card-dots .dot.active { background:#0a0e12; }
 
 .sl-card-meta { display:flex; flex-direction:column; gap:.3rem; }
 .slcm-row {
   font-size:.73rem;
-  color:rgba(240,237,230,.6);
+  color:rgba(10,14,18,.65);
   line-height:1.4;
 }
 .slcm-row b {
   font-weight:500;
-  color:#a8e6f0;
+  color:#0a0e12;
   margin-right:.3rem;
   font-style:normal;
 }
@@ -220,7 +217,7 @@ img { display:block; max-width:100%; }
   display:flex; align-items:center;
   border-top:1px solid rgba(255,255,255,.05);
 }
-.info-inner { padding:5rem 7rem; max-width:600px; }
+.info-inner { padding:5rem 9rem; max-width:640px; }
 .info-eyebrow {
   font-size:.54rem; letter-spacing:.3em; text-transform:uppercase;
   color:#a8e6f0; margin-bottom:1.2rem;
@@ -249,8 +246,8 @@ img { display:block; max-width:100%; }
 /* ═══════════════════════════════════════════
    ACCOMMODATION
 ═══════════════════════════════════════════ */
-section { position:relative; padding:7rem 9rem; }
-.container { max-width:1320px; margin:0 auto; }
+section { position:relative; padding:7rem 13rem; }
+.container { max-width:1000px; margin:0 auto; }
 .eyebrow {
   display:inline-flex; align-items:center; gap:.7rem;
   font-size:.6rem; letter-spacing:.3em; text-transform:uppercase;
