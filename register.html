@@ -11,10 +11,24 @@
 
 <div id="cur"><div id="cur-ring"></div><div id="cur-dot"></div></div>
 
-<nav class="nav">
+<!-- <nav class="nav">
   <a href="./index.html" class="nav-logo">DIVE TEAM</a>
+  <a href="./index.html" class="back">
+    <span class="ic">←</span>
+    <span>Back · Home</span>
+  </a>
   <a href="./index.html" class="nav-back">返回首頁</a>
-</nav>
+</nav> -->
+<header class="topbar">
+  <a href="./index.html" class="back">
+    <span class="ic">←</span>
+    <span>Back · Home</span>
+  </a>
+  <div class="meta">
+    <span><span class="dot"></span>OW Course · 4D3N</span>
+    <span><span class="dot"></span>Green Island · 2026</span>
+  </div>
+</header>
 
 <div class="hero">
   <div class="hero-bg"></div>
@@ -22,7 +36,7 @@
   <div class="hero-content">
     <div class="hero-tag">2026 Season · PADI Certified</div>
     <h1 class="hero-title">立即<span>報名</span></h1>
-    <p class="hero-sub">Open Water · Advanced Open Water &nbsp;／&nbsp; 名額有限，即刻入海</p>
+    <p class="hero-sub">Open Water ·  名額有限，即刻入海</p>
   </div>
 </div>
 
@@ -83,6 +97,10 @@
           <option value="" disabled selected>請選擇</option>
           <option value="1">1 人</option>
           <option value="2">2 人</option>
+          <option value="3">3 人</option>
+          <option value="4">4 人</option>
+          <option value="5">5 人</option>
+          <option value="6+">6 人以上</option>
         </select>
       </div>
     </div>
@@ -91,20 +109,23 @@
       <label for="notes">備註（選填）</label>
       <textarea id="notes" name="notes" placeholder="如有任何特殊需求或問題，歡迎在此說明…"></textarea>
     </div>
-
+    
+      <a href="https://portal.tdisdi.com/upload-files/sandp/currentYear/TDI/part%204/pdf/individual/TDI_Forms_12_Medical_Questionnaire-zh_tw.pdf" target="_blank" class="">
+        <p class="hint" style="color: rgb(0 120 240);margin-top:1rem; ">* 報名前請詳閱健康問卷 </p>
+      </a>
+    
     <div class="submit-area">
       <button type="submit" class="submit-btn" id="submit-btn">
         <span class="btn-label">確認送出報名</span>
         <span class="btn-icon">↗</span>
       </button>
-      <p class="hint" style="margin-top:1rem; text-align:center;">
-        送出後我們將以 Email 發送確認通知，請確保 Email 填寫正確。
-      </p>
+      
     </div>
+    
   </form>
 
 </div>
-
+<footer>DIVE TEAM 2026 · PADI Open Water Course </footer>
 <script src="./js/cursor.js"></script>
 <script src="./js/register.js"></script>
 </body>
