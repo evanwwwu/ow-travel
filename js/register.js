@@ -1,5 +1,6 @@
 // ── CONFIG ── 將 Google Apps Script 部署後的 URL 貼在這裡
-const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnDMQn6LxdnA8A5p9BXKe8X0XErEZkJ89YtvcBSZZerzkIMx5IMn1fMEHxij_T0ngz/exec';
+const MAX_SPOTS = 15;
 
 // ── STATS ──────────────────────────────────────────────────
 async function fetchStats() {
@@ -11,14 +12,16 @@ async function fetchStats() {
 
     const totalEl = document.getElementById('stat-total');
     if (totalEl) {
-      totalEl.innerHTML = '';
-      animateCount(totalEl, data.total ?? 0);
+      totalEl.innerHTML = '<span id="stat-current">0</span><span class="stat-max">/' + MAX_SPOTS + '</span>';
+      animateCount(document.getElementById('stat-current'), data.total ?? 0);
     }
 
     const updEl = document.getElementById('stat-updated');
     if (updEl && data.updatedAt) updEl.textContent = data.updatedAt;
 
   } catch (_) {
+    const totalEl = document.getElementById('stat-total');
+    if (totalEl) totalEl.textContent = '—';
     const updEl = document.getElementById('stat-updated');
     if (updEl) updEl.textContent = '無法讀取';
   }
@@ -37,23 +40,6 @@ function animateCount(el, target) {
 }
 
 fetchStats();
-
-// ── CURSOR ──
-const curRing = document.getElementById('cur-ring');
-const curDot  = document.getElementById('cur-dot');
-if (curRing && curDot) {
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  (function tick() {
-    rx += (mx - rx) * .15;
-    ry += (my - ry) * .15;
-    curRing.style.left = rx + 'px';
-    curRing.style.top  = ry + 'px';
-    curDot.style.left  = mx + 'px';
-    curDot.style.top   = my + 'px';
-    requestAnimationFrame(tick);
-  })();
-}
 
 // ── FORM ──
 const form        = document.getElementById('reg-form');

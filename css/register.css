@@ -4,9 +4,9 @@
 html { scroll-behavior:smooth; }
 body {
   min-height:100dvh;
-  background:#0a0e12;
+  background:#fff;
   font-family:'DM Sans',sans-serif;
-  color:#f0ede6;
+  color:#333;
   cursor:none;
 }
 
@@ -39,17 +39,17 @@ body {
 }
 .hero-bg {
   position:absolute; inset:0;
-  background:url('../images/02.jpg') center 35%/cover no-repeat;
-  filter:brightness(.35) saturate(1.1);
+  background:url('../images/reg.jpg') center 35%/cover no-repeat;
+  filter:brightness(.55) saturate(1.1);
 }
 .hero-overlay {
   position:absolute; inset:0;
-  background:linear-gradient(to bottom, transparent 0%, #0a0e12 100%);
+  /* background:linear-gradient(to bottom, transparent 0%, #0a0e12 100%); */
 }
 .hero-content { position:relative; z-index:2; }
 .hero-tag {
   font-size:.55rem; letter-spacing:.25em; text-transform:uppercase;
-  color:#a8e6f0; margin-bottom:.6rem;
+  color:#a8e6f0; margin-bottom:1.5rem;
   display:flex; align-items:center; gap:.5rem;
 }
 .hero-tag::before { content:''; display:block; width:20px; height:1px; background:#a8e6f0; }
@@ -67,7 +67,7 @@ body {
 
 /* ── STATS BAR ── */
 .stats-bar {
-  background:rgba(255,255,255,.03);
+  background:#f3f3f3;
   border-bottom:1px solid rgba(255,255,255,.07);
   padding:1.6rem 1.8rem;
 }
@@ -80,16 +80,16 @@ body {
 
 .stat-num {
   font-family:'Bebas Neue',sans-serif;
-  font-size:2.6rem; line-height:1;
-  color:#f0ede6;
+  font-size:3.6rem; line-height:1;
+  color:rgb(0, 95, 188);
 }
 .stat-label {
-  font-size:.52rem; letter-spacing:.15em; text-transform:uppercase;
-  color:rgba(240,237,230,.35); margin-top:.2rem;
+  font-size:.68rem; letter-spacing:.15em; text-transform:uppercase;
+  color:rgb(0, 53, 107); margin-top:.2rem;
 }
 .stat-divider {
   width:1px; height:48px; flex-shrink:0;
-  background:rgba(255,255,255,.1);
+  background:rgb(0, 53, 107);
 }
 
 /* course bars */
@@ -111,7 +111,7 @@ body {
 .stat-bar-aow { background:rgba(168,230,240,.55); }
 .stat-course-nums {
   font-family:'Bebas Neue',sans-serif; font-size:.9rem;
-  color:#f0ede6; white-space:nowrap; min-width:48px; text-align:right;
+  color:#333; white-space:nowrap; min-width:48px; text-align:right;
 }
 .stat-max { color:rgba(240,237,230,.3); font-size:.7rem; }
 .stat-remaining {
@@ -121,7 +121,7 @@ body {
 .stat-remaining.full { color:rgba(255,100,80,.7); }
 
 .stat-updated {
-  font-size:.62rem; color:rgba(240,237,230,.4);
+  font-size:.62rem; color:rgb(0, 95, 188);
   letter-spacing:.04em; line-height:1.5;
 }
 
@@ -164,15 +164,15 @@ body {
 
 label {
   display:block;
-  font-size:.58rem; letter-spacing:.15em; text-transform:uppercase;
-  color:rgba(240,237,230,.45); margin-bottom:.5rem;
+  font-size:.68rem; letter-spacing:.15em; text-transform:uppercase;
+  color:#333; margin-bottom:.5rem;
 }
 label .req { color:#a8e6f0; margin-left:.2rem; }
 
 input, select, textarea {
   width:100%; background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.1);
-  color:#f0ede6; padding:.85rem 1rem;
+  border:1px solid rgb(149 149 149);
+  color:#333; padding:.85rem 1rem;
   font-family:'DM Sans',sans-serif; font-size:.85rem;
   outline:none; transition:border-color .2s, background .2s;
   appearance:none; -webkit-appearance:none;
@@ -193,7 +193,7 @@ select {
   padding-right:2.5rem;
   cursor:pointer;
 }
-select option { background:#0f1620; color:#f0ede6; }
+select option { background:#0f1620; color:#333; }
 
 textarea { resize:vertical; min-height:100px; line-height:1.6; }
 
@@ -227,7 +227,7 @@ textarea { resize:vertical; min-height:100px; line-height:1.6; }
   background:rgba(168,230,240,.08);
   color:#a8e6f0;
 }
-.radio-option label:hover { border-color:rgba(168,230,240,.4); color:#f0ede6; }
+.radio-option label:hover { border-color:rgba(168,230,240,.4); color:#333; }
 
 /* ── DIVIDER ── */
 .form-divider { margin:2.4rem 0 2rem; }
@@ -262,16 +262,23 @@ textarea { resize:vertical; min-height:100px; line-height:1.6; }
 .submit-area { margin-top:2.5rem; text-align:center; }
 .submit-btn {
   display:inline-flex; align-items:center; gap:.8rem;
-  border:1px solid rgba(168,230,240,.5); padding:1.1rem 3rem;
+  border:1px solid rgb(35, 123, 208);
+   padding:1.1rem 3rem;
   font-family:'DM Sans',sans-serif;
   font-size:.65rem; font-weight:500; letter-spacing:.2em; text-transform:uppercase;
-  color:#f0ede6; background:transparent; cursor:pointer;
+  color:rgb(35, 123, 208);
+  /* background:transparent; */
+   cursor:pointer;
   transition:background .2s, border-color .2s, gap .2s;
   position:relative; overflow:hidden;
+  background: #fff;
+
 }
 .submit-btn:hover:not(:disabled) {
-  background:rgba(168,230,240,.08);
-  border-color:#a8e6f0; gap:1.2rem;
+  color:#fff;
+  background:rgb(35, 123, 208);
+  /* border-color:#a8e6f0; gap:1.2rem; */
+  
 }
 .submit-btn:disabled { opacity:.4; cursor:not-allowed; }
 .submit-btn .btn-icon { font-size:.9rem; transition:transform .2s; }
@@ -314,7 +321,7 @@ textarea { resize:vertical; min-height:100px; line-height:1.6; }
 }
 .success-title {
   font-family:'Bebas Neue',sans-serif;
-  font-size:2.5rem; letter-spacing:.08em; color:#f0ede6;
+  font-size:2.5rem; letter-spacing:.08em; color:#333;
   margin-bottom:.6rem;
 }
 .success-sub {

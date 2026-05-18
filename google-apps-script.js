@@ -50,8 +50,16 @@ function doPost(e) {
 // ── GET：回傳統計資料 ───────────────────────────────────────
 function doGet(e) {
   try {
-    const sheet = getOrCreateSheet();
-    const total = Math.max(0, sheet.getLastRow() - 1);
+    const sheet    = getOrCreateSheet();
+    const lastRow  = sheet.getLastRow();
+    let   total    = 0;
+    if (lastRow > 1) {
+      const values = sheet.getRange(2, 5, lastRow - 1, 1).getValues();
+      values.forEach(row => {
+        const n = parseInt(row[0], 10);
+        if (!isNaN(n)) total += n;
+      });
+    }
 
     return jsonResponse({
       total,
