@@ -64,3 +64,21 @@ document.querySelectorAll('.stay-card, .incl-item').forEach(el => {
   el.style.transition = 'opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)';
   revealIO.observe(el);
 });
+
+/* ── Sticky left panel: vertically centered in viewport (readymag-style) ──
+   position:sticky + dynamic top = (vh - panelH) / 2
+   The panel stays centered while scrolling through the section.
+   At section end, sticky naturally releases and the panel scrolls away. */
+function centerStickyPanels() {
+  const vh = window.innerHeight;
+  document.querySelectorAll('.story-left').forEach(el => {
+    if (getComputedStyle(el).position !== 'sticky') return;
+    const h = el.offsetHeight;
+    const top = Math.max(0, Math.round((vh - h) / 2));
+    el.style.top = top + 'px';
+  });
+}
+
+document.fonts.ready.then(centerStickyPanels);
+window.addEventListener('resize', centerStickyPanels, { passive: true });
+centerStickyPanels();

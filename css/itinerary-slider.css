@@ -100,13 +100,13 @@ img { display:block; max-width:100%; }
 .text-viewer{
   padding-left:2.5rem;
 }
-/* ── Left panel: full-height sticky ── */
+/* ── Left panel: sticky centered ── */
 .story-left {
   position:sticky;
-  top:0;
-  height:100vh; height:100dvh;
+  top:0; /* overridden by JS to (vh - panelH) / 2 */
+  /* height:100vh removed — JS centers it vertically */
   /* background:#e8e5de; */
-  background:#ffffff; 
+  background:#ffffff;
   overflow:hidden;
   display:flex;
   flex-direction:column;
