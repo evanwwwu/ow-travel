@@ -23,9 +23,9 @@ function doPost(e) {
     const data  = JSON.parse(e.postData.contents);
 
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['提交時間', '姓名', '手機號碼', 'Email', '報名人數', '備註']);
+      sheet.appendRow(['提交時間', '姓名', '手機號碼', 'Email', '報名人數', '住宿選擇', '備註']);
       sheet.setFrozenRows(1);
-      const h = sheet.getRange(1, 1, 1, 6);
+      const h = sheet.getRange(1, 1, 1, 7);
       h.setBackground('#1a3d6b');
       h.setFontColor('#ffffff');
       h.setFontWeight('bold');
@@ -37,6 +37,7 @@ function doPost(e) {
       data.phone || '',
       data.email || '',
       data.count || '',
+      data.room  || '',
       data.notes || '',
     ]);
 
