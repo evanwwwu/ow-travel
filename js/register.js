@@ -1,6 +1,6 @@
 // ── CONFIG ── 將 Google Apps Script 部署後的 URL 貼在這裡
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnDMQn6LxdnA8A5p9BXKe8X0XErEZkJ89YtvcBSZZerzkIMx5IMn1fMEHxij_T0ngz/exec';
-const MAX_SPOTS = 15;
+const MAX_SPOTS = 20;
 
 // ── STATS ──────────────────────────────────────────────────
 async function fetchStats() {
@@ -47,7 +47,7 @@ const submitBtn   = document.getElementById('submit-btn');
 const errorBanner = document.getElementById('error-banner');
 const successScr  = document.getElementById('success-screen');
 
-const REQUIRED_FIELDS = ['name', 'phone', 'email', 'count'];
+const REQUIRED_FIELDS = ['name', 'phone', 'email', 'count', 'room'];
 
 function getVal(name) {
   const el = form.elements[name];
@@ -95,6 +95,7 @@ function collectData() {
     phone:     getVal('phone'),
     email:     getVal('email'),
     count:     getVal('count'),
+    room:      getVal('room'),
     notes:     getVal('notes'),
   };
 }
