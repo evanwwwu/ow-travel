@@ -139,12 +139,12 @@ a{
   font-family:'Bebas Neue',sans-serif; font-size:.9rem;
   color:#333; white-space:nowrap; min-width:48px; text-align:right;
 }
-.stat-max { color:rgba(240,237,230,.3); font-size:.7rem; }
+.stat-max { color:rgba(0,0,0,.35); font-size:.7rem; }
 .stat-remaining {
   font-size:.52rem; letter-spacing:.08em;
-  color:rgba(168,230,240,.6); white-space:nowrap; min-width:50px;
+  color:rgba(0,95,188,.6); white-space:nowrap; min-width:50px;
 }
-.stat-remaining.full { color:rgba(255,100,80,.7); }
+.stat-remaining.full { color:rgba(200,50,30,.8); }
 
 .stat-updated {
   font-size:.8rem; color:rgb(0, 95, 188);
