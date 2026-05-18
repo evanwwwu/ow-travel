@@ -247,7 +247,7 @@ img { display:block; max-width:100%; }
   /* border-top:1px solid rgba(10,14,18,.07); */
   /* border-left:1px solid rgba(10,14,18,.07); */
 }
-.info-inner { padding:2.5rem 3rem; max-width:520px; }
+.info-inner { padding:2.5rem 3rem; max-width:600px; }
 .info-eyebrow {
   font-size:.54rem; letter-spacing:.3em; text-transform:uppercase;
   color:#1a4875; margin-bottom:1.2rem;
@@ -367,6 +367,7 @@ footer { padding:1rem 10%; text-align:center;     background: #1a1a1a;color: rgb
     letter-spacing:.18em;
   }
   .slcm-row{font-size: .75rem;}
+  .story-left { padding:5rem 3rem 1rem 1rem; }
 }
 @media (max-width:1024px) {
   .sl-card-name {
@@ -378,7 +379,7 @@ footer { padding:1rem 10%; text-align:center;     background: #1a1a1a;color: rgb
 @media (min-width: 1023px) and (max-width: 1440px) {
   .story-wrap {margin:0 5%;}
   .incl-grid { grid-template-columns:repeat(2,1fr); }
-  .story-left { padding:5rem 2rem 2.5rem 0rem; }
+  .story-left { padding:5rem 3rem 1rem 0rem; }
   .sl-title { font-size:clamp(2.2rem,4.5vw,3.8rem); }
   .info-inner { padding:0rem 3rem; }
   .section-title{line-height: .95;}
