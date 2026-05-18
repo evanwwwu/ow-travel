@@ -298,16 +298,20 @@ textarea { resize:vertical; min-height:100px; line-height:1.6; }
   transition:background .2s, border-color .2s, gap .2s;
   position:relative; overflow:hidden;
   background: #fff;
+  margin:0 .4rem;
+  justify-content:center;
 
 }
-.submit-btn:hover:not(:disabled) {
+.submit-btn:hover:not(:disabled),.submit-btn.ab {
   color:#fff;
   background:rgb(35, 123, 208);
   /* border-color:#a8e6f0; gap:1.2rem; */
-  
+}
+.submit-btn.ab:hover{
+  opacity: 0.7;
 }
 .submit-btn:disabled { opacity:.4; cursor:not-allowed; }
-.submit-btn .btn-icon { font-size:.9rem; transition:transform .2s; }
+.submit-btn .btn-icon { font-size:.65rem; transition:transform .2s; }
 .submit-btn:hover:not(:disabled) .btn-icon { transform:translateX(4px); }
 
 /* loading spinner */
