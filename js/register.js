@@ -1,5 +1,5 @@
 // ── CONFIG ── 將 Google Apps Script 部署後的 URL 貼在這裡
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnDMQn6LxdnA8A5p9BXKe8X0XErEZkJ89YtvcBSZZerzkIMx5IMn1fMEHxij_T0ngz/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxagnf41ikpYTInddUKnQf2ypqiQWCuBA_rltT9mv9S-S0M7KJ_bML_rZXCgxuUl-dm/exec';
 const MAX_SPOTS = 20;
 
 // ── STATS ──────────────────────────────────────────────────
