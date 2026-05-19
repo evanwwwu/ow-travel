@@ -288,6 +288,7 @@ section { position:relative; padding:6rem 0; }
 .eyebrow::before { content:''; width:24px; height:1px; background:#1a4875; }
 .section-title {     font-family: 'Barlow Condensed' !important; font-size:clamp(2.4rem,5vw,4.2rem); line-height:.75; margin-bottom:.5rem; color:#00356b; }
 .section-sub   { color:rgba(10,14,18,.5); max-width:500px; font-size:.9rem; }
+.section-sub.red  { color:rgb(221,84,67); }
 
 /* ═══════════════════════════════════════════
    ACCOMMODATION
